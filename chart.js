@@ -3,10 +3,17 @@ import { firebaseConfig } from "./config.js";
 
 firebase.initializeApp(firebaseConfig);
 
+document.querySelector('button').addEventListener('click', vote);
+function vote() {
 
+    let vote = document.querySelector('input[name="language"]:checked').value;
 
+    let firbaseRef = firebase.database().ref();
+    firbaseRef.child("vote/" + "language/" + vote).push("1");
+    alert(vote);
 
-let vote = document.querySelector('input[name="language"]:checked').value;
+}
+
 
 
 document.addEventListener('DOMContentLoaded',
@@ -28,12 +35,12 @@ function best_language() {
     var ref = firebase.database().ref('/vote/');
     ref.once("value")
         .then(function (snapshot) {
-            var a = snapshot.child("/language/PHP").numChildren();
-            var b = snapshot.child("/language/Python").numChildren();
-            var d = snapshot.child("/language/Javascript").numChildren();
-            var e = snapshot.child("/language/Java").numChildren();
-            var f = snapshot.child("/language/C++").numChildren();
-            var g = snapshot.child("/language/Go").numChildren();
+            var a = snapshot.child("/language/php").numChildren();
+            var b = snapshot.child("/language/python").numChildren();
+            var d = snapshot.child("/language/javascript").numChildren();
+            var e = snapshot.child("/language/java").numChildren();
+            var f = snapshot.child("/language/c++").numChildren();
+            var g = snapshot.child("/language/go").numChildren();
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -41,8 +48,8 @@ function best_language() {
                 data: {
                     labels: ["PHP", "Python", "Javascript", "Java", "C++", "Go"],
                     datasets: [{
-                        label: 'PRESIDENT',
-                        data: [a, b, c, d, e, f, g],
+                        label: 'lANGUAGES',
+                        data: [a, b, d, e, f, g],
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(255, 99, 132)',
