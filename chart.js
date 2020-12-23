@@ -48,7 +48,7 @@ function best_language() {
                 data: {
                     labels: ["PHP", "Python", "Javascript", "Java", "C++", "Go"],
                     datasets: [{
-                        label: 'lANGUAGES',
+                        label: 'LANGUAGES',
                         data: [a, b, d, e, f, g],
                         backgroundColor: [
                             'rgb(255, 99, 132)',
